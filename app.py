@@ -3,11 +3,13 @@ import datetime
 from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
- 
+
+load_dotenv()
+
 # to avoid multiple running app, make a create_app() function
 def create_app():
     app = Flask(__name__)
-    dbclient = MongoClient(os.environ.get(MONGODB_BLOG))
+    dbclient = MongoClient(os.environ.get('MONGODB_BLOG'))
     db = dbclient.microblog
     #print(dbclient.list_database_names())
 
