@@ -2,12 +2,12 @@ from flask import Flask, render_template, request
 import datetime
 from pymongo import MongoClient
 import os
+from dotenv import load_dotenv
  
 # to avoid multiple running app, make a create_app() function
 def create_app():
     app = Flask(__name__)
-    db = "mongodb+srv://mongohz028db:mongohz028db@microblog-app.ojm66.mongodb.net/test"
-    dbclient = MongoClient(db)
+    dbclient = MongoClient(os.environ.get(MONGODB_BLOG))
     db = dbclient.microblog
     #print(dbclient.list_database_names())
 
